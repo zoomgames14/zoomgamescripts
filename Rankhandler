@@ -1,0 +1,28 @@
+# zoomgamescripts
+Roblox scripts made by zoom games
+you will need to make the script this will be a normal roblox script then get this model here:
+https://create.roblox.com/store/asset/75547270211459/Rank
+put that model inside the script!
+
+-- ZoomGames's free to use rank GUI/script.
+
+
+local groupID = 0 -- Put your Group ID here!
+
+game.Players.PlayerAdded:Connect(function(player)
+	local groupRank = player:GetRoleInGroup(groupID)
+	local clone = script.Rank:Clone()
+	clone.Parent = game.Workspace:WaitForChild(player.Name).Head
+	clone.Frame.Name1.Text = player.Name
+	clone.Frame.Rank.Text = groupRank
+	
+	player.CharacterAdded:Connect(function()
+		local groupRank = player:GetRoleInGroup(groupID)
+		local clone = script.Rank:Clone()
+		clone.Parent = game.Workspace:WaitForChild(player.Name).Head
+		clone.Frame.Name1.Text = player.Name
+		clone.Frame.Rank.Text = groupRank
+	end)
+
+
+end)
